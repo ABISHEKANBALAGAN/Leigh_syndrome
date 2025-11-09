@@ -1,0 +1,101 @@
+======================================================================
+EXPERIMENTAL VALIDATION CHECKLIST
+Leigh Syndrome Biomarker Candidates
+======================================================================
+
+PHASE 2: FUNCTIONAL VALIDATION
+----------------------------------------------------------------------
+
+A. Mitochondrial Function Assays
+   □ Complex I activity assay
+   □ Complex II activity assay
+   □ Complex IV (COX) activity assay
+   □ Complex V (ATP synthase) activity assay
+   □ Citrate synthase activity (normalization)
+
+B. Cellular Bioenergetics
+   □ ATP production assay (luminescence-based)
+   □ Oxygen consumption rate (Seahorse/Oroboros)
+   □ Mitochondrial membrane potential (TMRE/JC-1)
+   □ ROS production (MitoSOX)
+
+C. Cell/Tissue Models
+   □ Patient-derived fibroblasts (if available)
+   □ Patient muscle biopsies (archived)
+   □ Induced pluripotent stem cells (iPSCs)
+   □ Neuronal differentiation from iPSCs
+
+PHASE 3: CLINICAL BIOMARKER VALIDATION
+----------------------------------------------------------------------
+
+A. Sample Requirements
+   Patient cohort:
+   □ Leigh syndrome patients (n≥20)
+   □ Age-matched controls (n≥20)
+   □ Other mitochondrial disease controls (n≥10)
+
+   Sample types:
+   □ Plasma/serum (biomarker detection)
+   □ Muscle biopsy (respiratory chain analysis)
+   □ CSF (neurological biomarkers)
+
+B. Biomarker Measurements
+   □ ELISA development for top 5 candidates
+   □ Multi-plex immunoassay (Luminex)
+   □ Mass spectrometry validation
+
+SAMPLE PREPARATION PROTOCOLS
+----------------------------------------------------------------------
+
+For Western Blot:
+  □ Protein extraction (RIPA or mitochondrial isolation)
+  □ BCA/Bradford protein quantification
+  □ SDS-PAGE (4-12% gradient gels)
+  □ PVDF membrane transfer
+  □ Blocking (5% milk or BSA)
+  □ Primary antibody (1:1000, overnight 4°C)
+  □ Secondary antibody (1:5000, 1h RT)
+  □ ECL detection
+  □ Densitometry analysis (ImageJ)
+
+For qPCR:
+  □ RNA extraction (TRIzol or RNeasy)
+  □ RNA quality check (260/280 ratio ≥1.8)
+  □ DNase treatment
+  □ cDNA synthesis (1-2 μg RNA)
+  □ qPCR (SYBR Green or TaqMan)
+  □ ΔΔCt analysis (normalized to housekeeping)
+
+STATISTICAL CONSIDERATIONS
+----------------------------------------------------------------------
+
+Sample Size Calculation:
+  □ Power analysis (α=0.05, β=0.2, effect size from proteomics)
+  □ Minimum n=20 per group recommended
+
+Statistical Tests:
+  □ Normality test (Shapiro-Wilk)
+  □ T-test or Mann-Whitney U (depending on distribution)
+  □ Multiple testing correction (Bonferroni or FDR)
+  □ ROC curve analysis (diagnostic potential)
+
+ESTIMATED BUDGET (USD)
+----------------------------------------------------------------------
+  Western Blot (10 targets):
+    - Antibodies: $3,000-5,000
+    - Reagents: $500-1,000
+
+  qPCR (12 targets):
+    - Primers: $300-600
+    - Master mix: $500-800
+
+  Functional Assays:
+    - Complex activity kits: $2,000-3,000
+    - ATP assay: $500-800
+    - Seahorse XF analysis: $3,000-5,000
+
+  Total Estimated Cost: $10,000-15,000
+
+======================================================================
+END OF VALIDATION CHECKLIST
+======================================================================

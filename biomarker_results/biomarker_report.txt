@@ -1,0 +1,107 @@
+======================================================================
+BIOMARKER PRIORITIZATION REPORT
+Day 5: Target/Biomarker Analysis
+======================================================================
+
+SCORING METHODOLOGY
+----------------------------------------------------------------------
+Multi-criteria scoring system (0-100 points):
+  1. Statistical Strength (0-20): Fold change + P-value
+  2. Mitochondrial Relevance (0-15): Complex assignment
+  3. Network Centrality (0-15): Hub protein status
+  5. Disease Association (0-20): Known Leigh/mitochondrial genes
+  6. Druggability (0-15): Therapeutic potential
+
+PRIORITY TIERS
+----------------------------------------------------------------------
+  Tier 1 (≥70 points): 0 candidates - Immediate validation
+  Tier 2 (50-69 points): 1 candidates - Secondary targets
+  Tier 3 (30-49 points): 23 candidates - Exploratory
+  Tier 4 (<30 points): 1077 candidates - Low priority
+
+TOP 20 BIOMARKER CANDIDATES
+----------------------------------------------------------------------
+Rank  Gene           Score   Tier                     logFC   Mito  Known  
+----------------------------------------------------------------------
+1     NDUFAF5        57.2    Tier 2                   -1.47   ✓     ✓      
+2     NDUFA4         45.3    Tier 3                   -2.78   ✓     -      
+3     MT-CO2         43.1    Tier 3                   -3.59   ✓     -      
+4     NDUFV3         42.4    Tier 3                   -2.53   ✓     -      
+5     COX6B1         39.9    Tier 3                   -2.20   ✓     -      
+6     COX6C          39.0    Tier 3                   -2.11   ✓     -      
+7     MAOB           36.7    Tier 3                   -4.05   ✓     -      
+8     MRS2           36.3    Tier 3                   3.09    ✓     -      
+9     ALDH4A1        35.3    Tier 3                   -3.06   ✓     -      
+10    AKR1B10        35.2    Tier 3                   -3.84   ✓     -      
+11    NDUFAF7        34.2    Tier 3                   1.00    ✓     -      
+12    TYMS           34.2    Tier 3                   3.55    -     -      
+13    ATAD3B         33.7    Tier 3                   4.19    ✓     -      
+14    COX5B          33.3    Tier 3                   -1.34   ✓     -      
+15    CBR3           33.1    Tier 3                   -3.51   ✓     -      
+16    ERAL1          32.7    Tier 3                   3.05    ✓     -      
+17    CPS1           32.5    Tier 3                   4.24    ✓     -      
+18    MTHFD2         32.4    Tier 3                   3.97    ✓     -      
+19    PRODH          31.6    Tier 3                   2.88    ✓     -      
+20    MGME1          31.2    Tier 3                   1.03    ✓     ✓      
+
+MITOCHONDRIAL COMPLEX DISTRIBUTION
+----------------------------------------------------------------------
+  Complex I: 4 genes
+    NDUFAF5, NDUFA4, NDUFV3, NDUFAF7
+  Complex II: No genes found
+  Complex III: No genes found
+  Complex IV: 4 genes
+    MT-CO2, COX6B1, COX6C, COX5B
+  Complex V: No genes found
+
+VALIDATED KNOWN LEIGH SYNDROME GENES
+----------------------------------------------------------------------
+  NDUFAF5         Rank:   1, Score: 57.2, logFC: -1.47
+
+POTENTIALLY DRUGGABLE TARGETS
+----------------------------------------------------------------------
+  MRS2            Druggability: 8/15, Total Score: 36.3, Rank: 8
+  SLC2A1          Druggability: 8/15, Total Score: 30.8, Rank: 22
+  GOSR1           Druggability: 8/15, Total Score: 25.8, Rank: 40
+  P4HTM           Druggability: 8/15, Total Score: 25.0, Rank: 51
+  ITPR2           Druggability: 8/15, Total Score: 24.9, Rank: 58
+  KCNN3           Druggability: 8/15, Total Score: 24.6, Rank: 63
+  IL6ST           Druggability: 8/15, Total Score: 24.4, Rank: 67
+  CNTFR           Druggability: 8/15, Total Score: 24.4, Rank: 68
+  NTRK2           Druggability: 8/15, Total Score: 24.2, Rank: 69
+  TOMM5           Druggability: 8/15, Total Score: 23.7, Rank: 76
+  FGFR3           Druggability: 8/15, Total Score: 23.5, Rank: 79
+  EPHA2           Druggability: 8/15, Total Score: 23.4, Rank: 82
+  DCC             Druggability: 8/15, Total Score: 22.8, Rank: 97
+  EPS8            Druggability: 8/15, Total Score: 21.2, Rank: 143
+  ARNT2           Druggability: 8/15, Total Score: 19.8, Rank: 173
+
+RECOMMENDATIONS FOR VALIDATION
+======================================================================
+
+IMMEDIATE PRIORITIES (for experimental validation):
+
+STATISTICAL SUMMARY
+----------------------------------------------------------------------
+  Total candidates evaluated: 1101
+  Mitochondrial proteins: 73 (6.6%)
+  Known disease genes: 2
+  Novel candidates (Tier 1-2): 0
+  Druggable targets: 37
+  Average score: 12.4
+  Median score: 10.8
+
+OUTPUT FILES GENERATED
+----------------------------------------------------------------------
+  - biomarker_ranking_full.csv           (All candidates)
+  - biomarker_top50.csv                  (Top 50 targets)
+  - biomarker_tier1_high_priority.csv    (Immediate targets)
+  - known_leigh_genes_validated.csv      (Known genes found)
+  - biomarker_prioritization_summary.png (4-panel figure)
+  - biomarker_heatmap_top30.png         (Score heatmap)
+  - biomarker_volcano_prioritized.png    (Prioritized volcano)
+  - biomarker_report.txt                 (This report)
+
+======================================================================
+END OF REPORT
+======================================================================

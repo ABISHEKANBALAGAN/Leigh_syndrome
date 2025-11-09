@@ -1,0 +1,2 @@
+Rank,Primary_Gene,Gene_names,Protein_names,logFC,FoldChange,adj.P.Val,Regulation,Total_Score,Priority_Tier,Statistical_Score,Mito_Score,Network_Score,Pathway_Score,Disease_Score,Druggability_Score,Is_Mitochondrial
+1,NDUFAF5,NDUFAF5,NADH dehydrogenase [ubiquinone] 1 alpha subcomplex assembly factor 5,-1.4721750578839423,0.3604384792896807,0.0062904653768549,Down,57.246521390078996,Tier 2: Medium Priority,4.562192513112169,15,0.0,12.684328876966825,20,5,True
