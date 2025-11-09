@@ -1,0 +1,2 @@
+"category","term","number_of_genes","number_of_genes_in_background","ncbiTaxonId","inputGenes","preferredNames","p_value","fdr","description"
+"Pfam","PF14551",4,4,9606,"9606.ENSP00000216122,9606.ENSP00000262105,9606.ENSP00000265056,9606.ENSP00000307288","MCM5,MCM4,MCM2,MCM7",6.46e-07,0.0015,"MCM N-terminal domain"
