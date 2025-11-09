@@ -1,0 +1,16 @@
+Metric,Value
+Total proteins tested,5183
+Samples (Group 1),3
+Samples (Group 2),3
+Significant proteins,1101
+Up-regulated,599
+Down-regulated,502
+Not significant,4082
+Median logFC (all),0.077
+Median logFC (significant),1.049
+Mean P-value,0.1723
+Mean adj.P-value,0.2084
+Prior df (d0),1.00
+Prior variance (s0²),0.0455
+FC threshold,1.0
+P-value threshold,0.05
