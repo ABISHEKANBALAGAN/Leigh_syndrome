@@ -29,20 +29,75 @@ Leigh_syndrome/
 │   ├── 0_processing/
 │   │   └── preprocess.py              # Data extraction
 │   ├── 1_preprocessing/
-│   │   └── preprocessing_pipeline.py  # QC & normalization
-│   ├── 2_analysis/
-│   │   └── differential_analysis.py   # Statistical testing
-│   ├── 3_enrichment/
-│   │   └── functional_enrichment.py   # Pathway analysis
-│   ├── 3_network/
-│   │   └── string_network_analysis.R  # PPI networks
+│   │   └── preprocess_filter_normalize.py  # QC & normalization
+│   ├── 2_DAanalysis/
+│   │   └── DAA.py   # Statistical testing
+│   ├── 3_Functional_enrichment_and_Biological_annotation/
+│   │   └── FEBA.py   # Pathway analysis
+│   ├── 3_Functional_enrichment_and_Biological_annotation/
+│   │   └── string_ppi.R  # PPI networks
 │   └── 4_target_biomarker/
 │       └── biomarker_prioritization.py # Multi-criteria scoring
+├──lfq_matrix_intensities_only.csv     # Data Extraction outputs 
+├──lfq_matrix_with_annotations.csv     # Data Extraction outputs
+├──protein_info.csv                    # Data Extraction outputs
 ├── preprocessing_results/             # Day 1 outputs
-├── differential_results/              # Day 2 outputs  
+│   ├── 01_log2_transformation.png
+│   ├── 02_missing_value_diagnostics.png
+│   ├── 03_normalization_effects.png
+│   ├── 04_imputation_effects.png
+│   ├── 05_correlation_pca.png
+│   ├── intensities_imputed.csv
+│   ├── preprocessed_data.pkl
+│   ├── preprocessed_data_full.csv
+│   └── protein_info_filtered.csv
+├── differential_results/              # Day 2 outputs
+│   ├── differential_results_full.csv
+│   ├── heatmap_top_proteins.png
+│   ├── ma_plot.png
+│   ├── pvalue_distribution.png
+│   ├── qc_summary.csv
+│   ├── sig_for_enrichment.tsv
+│   ├── significant_proteins.csv
+│   ├── top100_proteins.csv
+│   └── volcano_plot.png
 ├── v3_enrichment_results/             # Day 3 outputs
+│   ├── biological_summary_annotated.csv
+│   ├── enrichment_all_dotplot.png
+│   ├── enrichment_down_dotplot.png
+│   ├── enrichment_up_dotplot.png
+│   ├── gprofiler_all_significant.csv
+│   ├── gprofiler_down_regulated.csv
+│   ├── gprofiler_up_regulated.csv
+│   ├── mitochondrial_proteins.csv
+│   ├── pathway_comparison.png
+│   └── top100_annotated_summary.csv
 ├── new_1_enrichment_results/          # Day 4 outputs
+│   ├── cytoscape_edges.txt
+│   ├── cytoscape_nodes.txt
+│   ├── string_enrichment_component.csv
+│   ├── string_enrichment_function.csv
+│   ├── string_enrichment_kegg.csv
+│   ├── string_enrichment_pfam.csv
+│   ├── string_enrichment_process.csv
+│   ├── string_gene_mapping.csv
+│   ├── string_input_genes.txt
+│   ├── string_interactions.csv
+│   ├── string_modules.csv
+│   ├── string_network_communities.png
+│   ├── string_network_hubs.png
+│   ├── string_network_regulation.png
+│   ├── string_network_statistics.csv
+│   └── string_network_statistics_plot.png
 └── biomarker_results/                 # Day 5 outputs
+    ├── biomarker_heatmap_top30.png
+    ├── biomarker_prioritization_summary.png
+    ├── biomarker_ranking_full.csv
+    ├── biomarker_report.txt
+    ├── biomarker_top50.csv
+    ├── biomarker_volcano_prioritized.png
+    ├── known_leigh_genes_validated.csv
+    └── validation_checklist.txt
 ```
 
 ## 🛠️ Installation & Dependencies
@@ -85,25 +140,25 @@ awk 'BEGIN { OFS="\t"; print "RawFile","Experiment","Fraction","Group","Conditio
 ### Day 1: Data Extraction & Preprocessing
 ```bash
 python scripts/0_processing/preprocess.py
-python scripts/1_preprocessing/preprocessing_pipeline.py
+python scripts/1_preprocessing/preprocess_filter_normalize.py
 ```
 **Outputs**: Normalized log2 intensities, QC plots, imputed data matrix
 
 ### Day 2: Differential Expression Analysis
 ```bash
-python scripts/2_analysis/differential_analysis.py
+python scripts/2_DAanalysis/DAA.py
 ```
 **Outputs**: 1,101 significant proteins, volcano plots, statistical results
 
 ### Day 3: Functional Enrichment
 ```bash
-python scripts/3_enrichment/functional_enrichment.py
+python scripts/3_Functional_enrichment_and_Biological_annotation/FEBA.py
 ```
 **Outputs**: Pathway enrichments, mitochondrial analysis, biological summaries
 
 ### Day 4: Network Analysis
 ```bash
-Rscript scripts/3_network/string_network_analysis.R
+Rscript scripts/3_Functional_enrichment_and_Biological_annotation/string_ppi.R
 ```
 **Outputs**: PPI network, hub proteins, functional modules, Cytoscape files
 
@@ -111,14 +166,16 @@ Rscript scripts/3_network/string_network_analysis.R
 ```bash
 python scripts/4_target_biomarker/biomarker_prioritization.py
 ```
-**Outputs**: Ranked biomarkers, validation checklist, multi-criteria scores
+**Outputs**: Ranked biomarkers, multi-criteria scores, validation checklist
 
 ## 📊 Key Results
 
 ### Statistical Findings
 - **1,101 significantly altered proteins** (21.2% of proteome)
 - **Balanced regulation**: 599 up, 502 down in controls
-- **Strong effects**: Median 2.1× fold change in significant proteins
+- **Strong effects**: Median 2.1× fold change(logFC = 1.049) in significant proteins
+- **High confidence**: Empirical Bayes moderation with prior df = 1.00, prior variance = 0.0455
+- **Stringent thresholds**: |logFC| > 1.0 (2-fold change), adj.P.Val < 0.05 (FDR correction)
 
 ### Biological Insights
 - **Nuclear reprogramming**: DNA replication, ribosome biogenesis upregulated
