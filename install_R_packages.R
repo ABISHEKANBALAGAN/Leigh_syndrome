@@ -1,0 +1,1 @@
+install.packages(c("STRINGdb", "igraph", "ggplot2", "dplyr", "readr"))
