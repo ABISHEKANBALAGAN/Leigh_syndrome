@@ -279,6 +279,88 @@ The pipeline provides a comprehensive wet-lab validation protocol including:
 2. Develop machine learning classifiers for patient stratification
 3. Explore drug repurposing using connectivity mapping
 
+
+## 🐳 Docker Setup (Added to README.md)
+
+### Quick Start with Docker
+
+The entire pipeline has been dockerized for easy reproducibility:
+
+```bash
+# Build the Docker image
+docker build -t leigh_pipeline .
+
+# Run the container interactively
+docker run -it leigh_pipeline
+
+# Once inside the container, run any script:
+python scripts/0_processing/preprocess.py
+python scripts/1_preprocessing/preprocessing_pipeline.py
+python scripts/2_analysis/differential_analysis.py
+python scripts/3_enrichment/functional_enrichment.py
+Rscript scripts/3_network/string_network_analysis.R
+python scripts/4_target_biomarker/biomarker_prioritization.py
+```
+
+### Dockerfile
+```dockerfile
+# Base image with Python and R
+FROM rocker/tidyverse:4.3.2
+
+# Install system deps
+RUN apt-get update && apt-get install -y \
+    python3 python3-pip python3-dev \
+    libxml2-dev libcurl4-openssl-dev libssl-dev \
+    && apt-get clean
+
+# Set working directory
+WORKDIR /app
+
+# Copy everything (scripts, data, configs)
+COPY . /app/
+
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Install R dependencies
+RUN Rscript install_R_packages.R
+
+# Make scripts executable
+RUN find /app -name "*.py" -exec chmod +x {} \;
+
+# Set default command 
+CMD ["bash"]
+```
+
+### Requirements Files
+
+**requirements.txt**
+```
+pandas>=1.5.0
+numpy>=1.21.0
+matplotlib>=3.5.0
+seaborn>=0.11.0
+scipy>=1.7.0
+statsmodels>=0.13.0
+scikit-learn>=1.0.0
+requests>=2.25.0
+pathlib2>=2.3.0
+```
+
+**install_R_packages.R**
+```r
+# Install required R packages
+install.packages("ggplot2", repos="https://cloud.r-project.org")
+install.packages("dplyr", repos="https://cloud.r-project.org") 
+install.packages("readr", repos="https://cloud.r-project.org")
+install.packages("igraph", repos="https://cloud.r-project.org")
+
+# Install Bioconductor packages
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager", repos="https://cloud.r-project.org")
+    
+BiocManager::install("STRINGdb")
+```
 ## 📚 Citation
 
 If you use this pipeline, please cite:
